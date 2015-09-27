@@ -42,17 +42,17 @@ public class TopWordFinderTopologyPartB {
     config.put("wordsFile", args[0]);
 
     
-	builder.setSpout("spout", new FileReaderSpout(), 5);
+	builder.setSpout("spout", new FileReaderSpout(), 1);
 
-	builder.setBolt("split", new SplitSentenceBolt(), 8).shuffleGrouping("spout");
-	builder.setBolt("count", new WordCountBolt(), 12).fieldsGrouping("split", new Fields("word"));
+	builder.setBolt("split", new SplitSentenceBolt(), 3).shuffleGrouping("spout");
+	builder.setBolt("count", new WordCountBolt(), 5).fieldsGrouping("split", new Fields("word"));
 
 	
-	if (args != null && args.length > 0) {
-		config.setNumWorkers(3);
-
-		StormSubmitter.submitTopology(args[1], config, builder.createTopology());
-	}
+//	if (args != null && args.length > 0) {
+//		config.setNumWorkers(3);
+//
+//		StormSubmitter.submitTopology(args[1], config, builder.createTopology());
+//	}
 
 
 

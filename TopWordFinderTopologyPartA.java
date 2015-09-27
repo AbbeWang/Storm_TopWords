@@ -43,11 +43,11 @@ public class TopWordFinderTopologyPartA {
 	builder.setBolt("count", new WordCountBolt(), 12).fieldsGrouping("split", new Fields("word"));
 
 	
-	if (args != null && args.length > 0) {
-		config.setNumWorkers(3);
-
-		StormSubmitter.submitTopology(args[0], config, builder.createTopology());
-	}
+//	if (args != null && args.length > 0) {
+//		config.setNumWorkers(3);
+//
+//		StormSubmitter.submitTopology(args[0], config, builder.createTopology());
+//	}
 	
 
     config.setMaxTaskParallelism(3);
